@@ -22,12 +22,15 @@
 
 .menu__buttons {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
-  margin: 0 1rem 2rem;
+  margin: 0 2rem 2rem;
 }
 
 .menu__button {
-  flex-basis: 20%;
+  margin: 0.5rem;
+  flex-basis: 25%;
+  flex-grow: 1;
   color: $second-color;
   border: 2px solid $second-color;
   background-color: transparent;
@@ -70,6 +73,7 @@
   padding: 0.5rem;
   font-size: 1.4rem;
   font-family: $second-font;
+  margin-bottom: .5rem;
 }
 
 @media (min-width: 1280px) {
@@ -80,9 +84,13 @@
 
   .menu__buttons {
     margin: 0 20% 2rem;
+    flex-wrap: nowrap;
   }
 
   .menu__button {
+    margin: 1rem;
+    flex-basis: 20%;
+    flex-grow: 0;
     cursor: pointer;
     transition: .2s;
 

@@ -1,20 +1,12 @@
 import { menu } from "./menu.js";
 
 const menuItems = document.querySelector(".menu__items");
-const menuButtons = document.querySelectorAll(".menu__button");
 
-menuButtons.forEach((button) =>
-  button.addEventListener("click", function () {
-    showMenuItems(this.dataset.id);
-    menuButtons.forEach((button) =>
-      button.classList.remove("menu__button--active")
-    );
-    this.classList.add("menu__button--active");
-  })
-);
+const buttonsContainer = document.querySelector(".menu__buttons");
 
 window.addEventListener("DOMContentLoaded", function () {
   showMenuItems("all");
+  showMenuButtons();
 });
 
 function showMenuItems(category) {
@@ -36,4 +28,34 @@ function showMenuItems(category) {
     </div>`;
     menuItems.appendChild(menuElement);
   }
+}
+
+function showMenuButtons() {
+  const categories = menu.reduce(
+    (values, item) => {
+      if (!values.includes(item.category)) {
+        values.push(item.category);
+      }
+      return values;
+    },
+    ["all"]
+  );
+  const categoryButtons = categories
+    .map((category) => {
+      return `<button class="menu__button" data-id=${category}>${category}</button>`;
+    })
+    .join("");
+  buttonsContainer.innerHTML = categoryButtons;
+
+  const menuButtons = document.querySelectorAll(".menu__button");
+
+  menuButtons.forEach((button) =>
+    button.addEventListener("click", function () {
+      showMenuItems(this.dataset.id);
+      menuButtons.forEach((button) =>
+        button.classList.remove("menu__button--active")
+      );
+      this.classList.add("menu__button--active");
+    })
+  );
 }
