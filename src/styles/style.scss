@@ -1,0 +1,107 @@
+@import "variables";
+@import "base";
+
+.menu__title {
+  position: relative;
+  font-size: 3rem;
+  text-align: center;
+  padding: 2rem;
+  font-family: $main-font;
+  color: $main-color;
+
+  &::after {
+    display: block;
+    position: absolute;
+    content: "";
+    left: 25%;
+    right: 25%;
+    height: 5px;
+    background-color: $third-color;
+  }
+}
+
+.menu__buttons {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 0 1rem 2rem;
+}
+
+.menu__button {
+  flex-basis: 20%;
+  color: $second-color;
+  border: 2px solid $second-color;
+  background-color: transparent;
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-family: $main-font;
+
+  &--active {
+    background-color: $main-color;
+    color: $third-color;
+  }
+}
+
+.menu__items {
+  width: 90vw;
+  margin: 0 auto 30px;
+  display: grid;
+  gap: 2rem;
+}
+
+.menu__item-img {
+  max-width: 100%;
+  object-fit: cover;
+  border: 3px solid $second-color;
+}
+
+.menu__item-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 2rem;
+  font-family: $second-font;
+  text-transform: capitalize;
+  margin: 0.5rem;
+  padding-bottom: 0.5rem;
+  color: $main-color;
+  border-bottom: 3px solid $third-color;
+}
+
+.menu__item-text {
+  padding: 0.5rem;
+  font-size: 1.4rem;
+  font-family: $second-font;
+}
+
+@media (min-width: 1280px) {
+  .menu__title {
+    font-size: 4rem;
+    padding: 3rem;
+  }
+
+  .menu__buttons {
+    margin: 0 20% 2rem;
+  }
+
+  .menu__button {
+    cursor: pointer;
+    transition: .2s;
+
+    &:hover {
+      background-color: $main-color;
+      color: $third-color;
+    }
+  }
+
+  .menu__items {
+    max-width: 1200px;
+    margin: 3rem auto;
+    gap: 3rem;
+    grid-template-columns: 50% 50%;
+  }
+
+  .menu__item {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+  }
+}
